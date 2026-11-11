@@ -1,0 +1,16 @@
+[node]
+name = "bob-daemon"
+role = "bob"
+listen_addr = "0.0.0.0:0"
+
+[network]
+relay_addr = "relay:9447"
+keep_alive_secs = 10
+idle_timeout_secs = 120
+
+[crypto]
+backend = "toy"
+enable_zkp = false
+
+[ipc]
+socket_path = "/run/bdcp/bob.sock"

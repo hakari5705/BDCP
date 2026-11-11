@@ -1,0 +1,11 @@
+[package]
+name = "measure-tfhe"
+description = "Benchmark: measure real FHE ciphertext sizes (blowup factor)"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+tfhe = { version = "1.6", features = ["integer"] }
+bincode = "1"
+serde = { version = "1", features = ["derive"] }

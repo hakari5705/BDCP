@@ -1,0 +1,48 @@
+services:
+  relay:
+    build:
+      context: ..
+      dockerfile: deploy/Dockerfile
+    container_name: bdcp-relay
+    volumes:
+      - ./bdcp.toml:/etc/bdcp/bdcp.toml:ro
+    ports:
+      - "9447:9447/udp"
+    networks:
+      - bdcp-net
+    restart: unless-stopped
+
+  alice:
+    build:
+      context: ..
+      dockerfile: deploy/Dockerfile
+    container_name: bdcp-alice
+    depends_on:
+      - relay
+    volumes:
+      - ./alice.docker.toml:/etc/bdcp/bdcp.toml:ro
+      - bdcp-sockets:/run/bdcp
+    networks:
+      - bdcp-net
+    restart: unless-stopped
+
+  bob:
+    build:
+      context: ..
+      dockerfile: deploy/Dockerfile
+    container_name: bdcp-bob
+    depends_on:
+      - relay
+    volumes:
+      - ./bob.docker.toml:/etc/bdcp/bdcp.toml:ro
+      - bdcp-sockets:/run/bdcp
+    networks:
+      - bdcp-net
+    restart: unless-stopped
+
+volumes:
+  bdcp-sockets:
+
+networks:
+  bdcp-net:
+    driver: bridge

@@ -1,0 +1,23 @@
+[package]
+name = "bdcp-core"
+description = "Blind Data Collaboration Protocol — core types, traits, and cryptographic abstractions"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }
+bincode = "1"
+thiserror = "2"
+rand = "0.8"
+
+# FHE — real backend
+tfhe = { version = "1.6", features = ["integer", "shortint", "zk-pok"], optional = true }
+
+# Async runtime
+tokio = { version = "1", features = ["full"], optional = true }
+
+[features]
+default = ["node"]
+node = ["tokio"]
+tfhe-backend = ["tfhe"]

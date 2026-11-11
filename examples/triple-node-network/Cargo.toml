@@ -1,0 +1,15 @@
+[package]
+name = "triple-node-network"
+description = "BDCP integration test — Alice ↔ Relay ↔ Bob over QUIC"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+bdcp-core = { path = "../../bdcp-core" }
+bdcp-net = { path = "../../bdcp-net" }
+rustls = { version = "0.23", features = ["ring"] }
+tokio = { version = "1", features = ["full"] }
+tracing = "0.1"
+tracing-subscriber = "0.3"
+anyhow = "1"

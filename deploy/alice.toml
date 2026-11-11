@@ -1,0 +1,16 @@
+[node]
+name = "alice-daemon"
+role = "alice"
+listen_addr = "127.0.0.1:0"
+
+[network]
+relay_addr = "127.0.0.1:9447"
+keep_alive_secs = 10
+idle_timeout_secs = 120
+
+[crypto]
+backend = "tfhe"
+enable_zkp = true
+
+[ipc]
+socket_path = "/tmp/bdcp_alice.sock"

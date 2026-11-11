@@ -1,0 +1,17 @@
+[package]
+name = "bdcp-net"
+description = "BDCP network layer — QUIC-based encrypted computation relay"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+bdcp-core = { path = "../bdcp-core" }
+tokio = { version = "1", features = ["full"] }
+quinn = "0.11"
+rustls = "0.23"
+rcgen = "0.13"
+serde = { version = "1", features = ["derive"] }
+bincode = "1"
+tracing = "0.1"
+anyhow = "1"

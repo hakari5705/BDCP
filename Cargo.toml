@@ -1,0 +1,20 @@
+[workspace]
+resolver = "2"
+members = [
+    "bdcp-core",
+    "bdcp-node",
+    "bdcp-cli",
+    "bdcp-net",
+    "examples/simple-poc",
+    "examples/measure-tfhe",
+    "examples/triple-node-network",
+]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+
+# FHE is unusably slow in debug; SIMD + assembly optimisations are critical
+[profile.dev.package.tfhe]
+opt-level = 3

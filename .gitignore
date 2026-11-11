@@ -1,0 +1,13 @@
+/target/
+**/*.rs.bk
+*.swp
+*.swo
+*~
+.DS_Store
+*.log
+*.pid
+.env
+.env.*
+!.env.example
+!.env.sample
+.anchored-summary.md

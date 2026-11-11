@@ -1,0 +1,26 @@
+[Unit]
+Description=Blind Data Collaboration Protocol Node Daemon
+Documentation=https://github.com/anomalyco/bdcp
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/bdcp-node --config /etc/bdcp/bdcp.toml
+Restart=on-failure
+RestartSec=5s
+StandardOutput=journal
+StandardError=journal
+# Create a dedicated service user:
+#   sudo useradd -r -s /bin/false -m -d /var/lib/bdcp bdcp-service
+User=bdcp-service
+Group=bdcp-service
+
+# Security hardening
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/bdcp
+
+[Install]
+WantedBy=multi-user.target

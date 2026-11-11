@@ -1,0 +1,20 @@
+[package]
+name = "bdcp-cli"
+description = "BDCP command-line interface — launch relay, submit data, compute"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+bdcp-core = { path = "../bdcp-core", features = ["tfhe-backend"] }
+bdcp-net = { path = "../bdcp-net" }
+quinn = "0.11"
+rustls = { version = "0.23", features = ["ring"] }
+tokio = { version = "1", features = ["full"] }
+clap = { version = "4", features = ["derive"] }
+bincode = "1"
+tracing = "0.1"
+tracing-subscriber = "0.3"
+anyhow = "1"
+
+tfhe = { version = "1.6", features = ["integer", "shortint", "zk-pok"] }

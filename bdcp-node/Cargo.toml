@@ -1,0 +1,33 @@
+[package]
+name = "bdcp-node"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[[bin]]
+name = "bdcp-node"
+path = "src/main.rs"
+
+[dependencies]
+bdcp-core = { path = "../bdcp-core" }
+bdcp-net = { path = "../bdcp-net" }
+
+anyhow = "1"
+bincode = "1"
+clap = { version = "4", features = ["derive"] }
+serde = { version = "1", features = ["derive"] }
+toml = "0.8"
+tracing = "0.1"
+tracing-subscriber = "0.3"
+tokio = { version = "1", features = ["full"] }
+rustls = { version = "0.23", features = ["ring"] }
+quinn = "0.11"
+
+[features]
+tfhe-backend = ["bdcp-core/tfhe-backend", "dep:tfhe"]
+
+[dependencies.tfhe]
+version = "1.6"
+features = ["integer", "shortint", "zk-pok"]
+optional = true
+

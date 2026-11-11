@@ -1,0 +1,11 @@
+[package]
+name = "simple-poc"
+description = "Proof-of-concept: two-party encrypted mean computation"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+bdcp-core = { path = "../../bdcp-core" }
+tracing = "0.1"
+tracing-subscriber = "0.3"
